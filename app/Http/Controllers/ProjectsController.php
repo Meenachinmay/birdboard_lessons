@@ -12,6 +12,8 @@ class ProjectsController extends Controller
             'title' => $request['title'],
             'description' => $request['description']
         ]);
+
+        return redirect('/projects');
     }
 
     public function index(){
