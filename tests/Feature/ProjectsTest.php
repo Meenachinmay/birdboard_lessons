@@ -27,4 +27,12 @@ class ProjectsTest extends TestCase
 
         $this->get('/projects')->assertSee($attributes['title']);
     }
+
+    /** @test */
+    public function a_project_required_title_and_description(){
+
+        $attributes = factory('App\Project')->raw(['title' => '', 'description' => '']);
+
+        $this->post('/projects', $attributes)->assertSessionHasErrors(['title', 'description']);
+    }
 }
